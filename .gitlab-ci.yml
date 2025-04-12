@@ -1,6 +1,5 @@
 image: node:20
 stages:
-  - build
   - test
 
 cache:
@@ -8,27 +7,19 @@ cache:
   paths:
     - node_modules/
 
-build:
-  stage: build
-  script:
-    - npm install  
-    - cd frontend
-    - npm install  # Install frontend dependencies
-    - cd ../backend
-    - npm install  # Install backend dependencies
-    - cd ..
-
 frontend_format:
   stage: test
   script:
     - cd frontend
+    - npm install
     - npx eslint .
     - cd ..
 
-backend_format:
   stage: test
+backend_format:
   script:
     - cd backend
+    - npm install
     - npx eslint .
     - cd ..
 
