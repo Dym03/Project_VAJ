@@ -53,6 +53,7 @@ Error handling
 5 Express REST API layer 
 Valid API up to the REST specification for all operations on resources
 Status handling & error messages
+
 Front-end (React):
 5 Functional requirements
 App Layout with Navigation (Routing)
