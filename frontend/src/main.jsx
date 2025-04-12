@@ -5,6 +5,8 @@ import App from "./App";
 import BoulderGyms from "./components/BoulderGyms"
 import {loader as boulderGymLoader} from './routes/BoulderGyms.route'
 import ActiveBoulders from "./components/ActiveBoulders";
+import BoulderGymDetail from "./components/BoulderGymDetail";
+import { loader as gymDetailLoader } from "./routes/BoulderGymDetail.route";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,11 @@ const router = createBrowserRouter([
       {
         path: "/active_boulders",
         element: <ActiveBoulders />,
+      },
+      {
+        path: "/boulderGyms/:id",
+        element: <BoulderGymDetail />,
+        loader: gymDetailLoader,
       }
     ]
   },
