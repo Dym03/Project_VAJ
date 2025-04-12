@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
+import Toolbar from '@mui/material/Toolbar';
+import Button from "@mui/material/Button";
+import Box from '@mui/material/Box';
+import { Outlet, Link as RouterLink} from "react-router";
+
+const navItems = [
+  { label: "Home", path: "/" },
+  // { label: "Characters", path: "/characters" },
+  // { label: "Episodes", path: "/episodes" },
+  // { label: "Locations", path: "/locations" },
+];
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed"  sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ 
+              mr: 2,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none', }}>
+              App
+            </Typography>
+            
+            {navItems.map((item) => (
+            <Button
+              key={item.path}
+              component={RouterLink}
+              to={item.path}
+              sx={{
+                mr: 2,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+                backgroundColor: 'transparent',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                }
+              }}
+            >
+              {item.label}
+            </Button>
+          ))}
+          </Toolbar>
+      </AppBar>
+      <Outlet />
+    </Box>
+  );
 }
 
-export default App
+export default App;
+
