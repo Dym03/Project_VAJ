@@ -2,12 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App";
+import BoulderGyms from "./components/BoulderGyms"
+import {loader as boulderGymLoader, loader} from './routes/BoulderGyms.route'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: []
+    children: [
+      { 
+        path: "/boulderGyms",
+        element: <BoulderGyms />,
+        loader: boulderGymLoader,
+      }
+    ]
   },
 ]);
 

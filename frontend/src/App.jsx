@@ -8,9 +8,8 @@ import { Outlet, Link as RouterLink} from "react-router";
 
 const navItems = [
   { label: "Home", path: "/" },
-  // { label: "Characters", path: "/characters" },
-  // { label: "Episodes", path: "/episodes" },
-  // { label: "Locations", path: "/locations" },
+  { label: "Gyms", path: "/boulderGyms" },
+  { label: "Active Boulders", path: "/active_boulders" },
 ];
 
 
@@ -52,7 +51,9 @@ function App() {
           ))}
           </Toolbar>
       </AppBar>
-      <Outlet />
+      <Box sx={{mt: 8}}>
+        <Outlet />
+      </Box>
     </Box>
   );
 }

@@ -12,9 +12,9 @@ datasource db {
 
 model BoulderGym {
   id        Int      @id @default(autoincrement())
-  name      String   
-  city      String   
-  address   String   
+  name      String
+  city      String
+  address   String
   boulders  Boulder[]
 }
 

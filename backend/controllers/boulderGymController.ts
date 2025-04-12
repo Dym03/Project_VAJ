@@ -5,9 +5,16 @@ export const getAllBoulderGyms = async (
   _req: Request,
   res: Response,
 ): Promise<void> => {
+  const { grouped } = _req.query;
   try {
     const boulderGyms = await boulderGymModel.getAllBoulderGyms();
-    res.status(200).json(boulderGyms);
+    if (grouped === 'true') {
+      const groupedBoulderGyms =
+        await boulderGymModel.groupBoulderGymsByCity(boulderGyms);
+      res.status(200).json(groupedBoulderGyms);
+    } else {
+      res.status(200).json(boulderGyms);
+    }
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(500).json({ error: error.message });
@@ -39,6 +46,7 @@ export const createBoulderGym = async (
   res: Response,
 ): Promise<void> => {
   const { name, city, address } = req.body;
+  console.log(req.body);
 
   if (!city || !name || !address) {
     res.status(400).json({ error: 'Name, city and adress are required' });
