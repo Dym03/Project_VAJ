@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import * as boulderModel from "../models/boulder";
-import { isValidGrade } from "./gradeValueController";
+import { Request, Response } from 'express';
+import * as boulderModel from '../models/boulder';
+import { isValidGrade } from './gradeValueController';
 
 export const getAllBoulders = async (
   _req: Request,
@@ -13,7 +13,7 @@ export const getAllBoulders = async (
     if (error instanceof Error) {
       res.status(500).json({ error: error.message });
     } else {
-      res.status(500).json({ error: "An unknown error occurred" });
+      res.status(500).json({ error: 'An unknown error occurred' });
     }
   }
 };
@@ -22,19 +22,17 @@ export const createBoulder = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  let { name, builderName, grade, gym_id, active } = req.body;
-  gym_id = parseInt(gym_id);
+  const { name, builderName, grade, id, active } = req.body;
+  const gym_id = parseInt(id);
   if (!builderName || !name || !grade || !gym_id) {
-    res
-      .status(400)
-      .json({
-        error: "Builder`s name, boulder name, grade and gym id are required",
-      });
+    res.status(400).json({
+      error: 'Builder`s name, boulder name, grade and gym id are required',
+    });
     return;
   }
 
   if (!isValidGrade(grade)) {
-    res.status(400).json({ error: "The grade value is not valid" });
+    res.status(400).json({ error: 'The grade value is not valid' });
     return;
   }
 
@@ -51,7 +49,7 @@ export const createBoulder = async (
     if (error instanceof Error) {
       res.status(400).json({ error: error.message });
     } else {
-      res.status(500).json({ error: "An unknown error occurred" });
+      res.status(500).json({ error: 'An unknown error occurred' });
     }
   }
 };
@@ -71,7 +69,7 @@ export const updateBoulder = async (
   active = active?.trim() ? active : undefined;
 
   if (!isValidGrade(grade)) {
-    res.status(400).json({ error: "The grade value is not valid" });
+    res.status(400).json({ error: 'The grade value is not valid' });
     return;
   }
 
@@ -85,7 +83,7 @@ export const updateBoulder = async (
     if (error instanceof Error) {
       res.status(400).json({ error: error.message });
     } else {
-      res.status(500).json({ error: "An unknown error occurred" });
+      res.status(500).json({ error: 'An unknown error occurred' });
     }
   }
 };
@@ -104,7 +102,7 @@ export const deleteBoulder = async (
     if (error instanceof Error) {
       res.status(400).json({ error: error.message });
     } else {
-      res.status(500).json({ error: "An unknown error occurred" });
+      res.status(500).json({ error: 'An unknown error occurred' });
     }
   }
 };

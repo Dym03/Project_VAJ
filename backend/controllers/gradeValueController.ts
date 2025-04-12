@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
-import * as gradeValueModel from "../models/gradeValue";
-import { GradeValue } from "@prisma/client";
+import { Request, Response } from 'express';
+import * as gradeValueModel from '../models/gradeValue';
+import { GradeValue } from '@prisma/client';
 
-export const isValidGrade = (grade: any): grade is GradeValue => {
+export const isValidGrade = (grade: GradeValue): grade is GradeValue => {
   return Object.values(GradeValue).includes(grade);
 };
 
@@ -15,7 +15,7 @@ export const getAllGradeValues = (_req: Request, res: Response): void => {
       res.status(500).json({ error: error.message });
     } else {
       // Handle unexpected error types
-      res.status(500).json({ error: "An unknown error occurred" });
+      res.status(500).json({ error: 'An unknown error occurred' });
     }
   }
 };

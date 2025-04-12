@@ -1,0 +1,32 @@
+stages:
+  - build
+  - test
+  
+build:
+  stage: build
+  script:
+    - npm install
+
+frontend_format:
+  stage: test
+  script:
+    - cd frontend
+    - npx eslint .
+    - cd ..
+
+backend_format:
+  stage: test
+  script:
+    - cd backend
+    - npx eslint .
+    - cd ..
+
+md_test:
+  stage: test
+  image: python:3.12.9
+  before_script:
+    - python -m venv env
+    - source env/bin/activate
+    - pip install pymarkdownlnt
+  script:
+  - pymarkdown scan .

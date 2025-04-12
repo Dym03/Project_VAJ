@@ -1,4 +1,4 @@
-import { PrismaClient, Boulder, GradeValue, BoulderGym } from "@prisma/client";
+import { PrismaClient, Boulder, GradeValue } from '@prisma/client';
 
 const prisma = new PrismaClient();
 

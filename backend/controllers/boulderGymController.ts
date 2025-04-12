@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import * as boulderGymModel from "../models/boulderGym";
+import { Request, Response } from 'express';
+import * as boulderGymModel from '../models/boulderGym';
 
 export const getAllBoulderGyms = async (
   _req: Request,
@@ -12,7 +12,7 @@ export const getAllBoulderGyms = async (
     if (error instanceof Error) {
       res.status(500).json({ error: error.message });
     } else {
-      res.status(500).json({ error: "An unknown error occurred" });
+      res.status(500).json({ error: 'An unknown error occurred' });
     }
   }
 };
@@ -29,7 +29,7 @@ export const getBoulderGymById = async (
     if (error instanceof Error) {
       res.status(400).json({ error: error.message });
     } else {
-      res.status(500).json({ error: "An unknown error occurred" });
+      res.status(500).json({ error: 'An unknown error occurred' });
     }
   }
 };
@@ -41,7 +41,7 @@ export const createBoulderGym = async (
   const { name, city, address } = req.body;
 
   if (!city || !name || !address) {
-    res.status(400).json({ error: "Name, city and adress are required" });
+    res.status(400).json({ error: 'Name, city and adress are required' });
     return;
   }
 
@@ -56,7 +56,7 @@ export const createBoulderGym = async (
     if (error instanceof Error) {
       res.status(500).json({ error: error.message });
     } else {
-      res.status(500).json({ error: "An unknown error occurred" });
+      res.status(500).json({ error: 'An unknown error occurred' });
     }
   }
 };
