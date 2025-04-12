@@ -2,7 +2,12 @@ image: node:20
 stages:
   - build
   - test
-  
+
+cache:
+  key: "$CI_COMMIT_REF_NAME"  # Cache key based on branch or tag
+  paths:
+    - node_modules/
+
 build:
   stage: build
   script:
