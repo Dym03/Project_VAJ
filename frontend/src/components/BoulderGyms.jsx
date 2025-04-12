@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link as RouterLink, useLoaderData } from "react-router-dom";
 import { Container, Typography } from "@mui/material";
 import BoulderGymsAccordion from "./BoulderGymsAccordeon";
