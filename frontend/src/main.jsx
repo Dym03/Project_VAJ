@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App";
 import BoulderGyms from "./components/BoulderGyms"
 import {loader as boulderGymLoader} from './routes/BoulderGyms.route'
+import ActiveBoulders from "./components/ActiveBoulders";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
         path: "/boulderGyms",
         element: <BoulderGyms />,
         loader: boulderGymLoader,
+      },
+      {
+        path: "/active_boulders",
+        element: <ActiveBoulders />,
       }
     ]
   },
