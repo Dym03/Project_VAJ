@@ -9,9 +9,9 @@ export const getAllBoulders = async (
   const { active } = _req.query;
   try {
     let boulders = undefined;
-    if (active === 'true'){
+    if (active === 'true') {
       boulders = await boulderModel.getAllActiveBoulders();
-    }else {
+    } else {
       boulders = await boulderModel.getAllBoulders();
     }
     res.status(200).json(boulders);
@@ -29,8 +29,8 @@ export const createBoulder = async (
   res: Response,
 ): Promise<void> => {
   const { name, builderName, grade, active } = req.body;
-  const gym_id = parseInt(req.body['gym_id'])
-  
+  const gym_id = parseInt(req.body['gym_id']);
+
   if (!builderName || !name || !grade || !gym_id) {
     res.status(400).json({
       error: 'Builder`s name, boulder name, grade and gym id are required',

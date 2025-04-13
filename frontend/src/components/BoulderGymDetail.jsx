@@ -1,11 +1,9 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Container, Typography, Paper } from "@mui/material";
 
 function BoulderGymDetail() {
   const gym = useLoaderData();
-  const { id } = useParams();
-  console.log("Loaded gym:", gym);
 
   return (
     <Container sx={{ mt: 12 }}>

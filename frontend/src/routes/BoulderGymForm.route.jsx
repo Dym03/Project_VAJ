@@ -8,7 +8,7 @@ export async function loader() {
     return res.json();
   }
 
-export async function action({ request, params }) {
+export async function action({ request }) {
     const formData = new URLSearchParams(await request.formData());
   
     const gymData = {

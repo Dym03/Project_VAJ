@@ -10,7 +10,9 @@ export const getAllBoulderGyms = async (): Promise<BoulderGym[]> => {
   });
 };
 
-export const getBoulderGymById = async (id: number): Promise<BoulderGym | null> => {
+export const getBoulderGymById = async (
+  id: number,
+): Promise<BoulderGym | null> => {
   return prisma.boulderGym.findUnique({
     where: { id },
     include: { boulders: true },

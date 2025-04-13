@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData, Link as RouterLink, Form } from "react-router-dom";
+import { Link as RouterLink, Form } from "react-router-dom";
 import {
   Box,
   TextField,
@@ -7,9 +7,6 @@ import {
 } from "@mui/material";
 
 function BoulderGymForm() {
-  const gymsDictInitial = useLoaderData();
-  const [gymsDict, setGymsDict] = useState(gymsDictInitial);
-
   const [formData, setFormData] = useState({
     name: "",
     city: "",

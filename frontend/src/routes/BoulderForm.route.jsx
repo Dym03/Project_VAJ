@@ -1,6 +1,6 @@
 import { redirect } from 'react-router-dom';
 
-export async function loader({ params }) {
+export async function loader() {
     const [boulderGymsRes, gradeOptionsRes] = await Promise.all([
         fetch("/api/boulderGyms"),
         fetch("/api/gradeValues"),
@@ -25,7 +25,7 @@ export async function loader({ params }) {
   }
 
 
-export async function action({ request, params }) {
+export async function action({ request }) {
     const formData = new URLSearchParams(await request.formData());
     const body = {
         name: formData.get('name'),

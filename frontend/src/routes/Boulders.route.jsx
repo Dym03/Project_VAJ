@@ -1,4 +1,4 @@
-export async function loader({ params }) {
+export async function loader() {
     const res = await fetch("/api/boulders");
 
     if (!res.ok) {
