@@ -3,7 +3,7 @@ import { useParams, Form, useNavigate } from "react-router-dom";
 import { Typography, Box, Button } from "@mui/material";
 
 function DeleteBoulderForm() {
-  const { id } = useParams();
+  const { boulderId } = useParams();
   const navigate = useNavigate();
 
   return (
@@ -13,7 +13,7 @@ function DeleteBoulderForm() {
       </Typography>
       <Form method="post">
         <input type="hidden" name="_action" value="delete" />
-        <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="id" value={boulderId} />
         <Button type="submit" variant="contained" color="error" sx={{ mr: 2 }}>
           Delete
         </Button>

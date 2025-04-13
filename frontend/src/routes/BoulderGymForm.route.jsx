@@ -16,8 +16,6 @@ export async function action({ request }) {
       city: formData.get('city'),
       address: formData.get('address'),
     };
-    
-    console.log(gymData)
 
     const res = await fetch('/api/boulderGyms', {
       method: 'POST',
@@ -25,7 +23,6 @@ export async function action({ request }) {
       body: JSON.stringify(gymData),
     });
 
-    console.log(res)
   
     if (res.ok) {
       return redirect('/boulderGyms')

@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             path: "/boulderGyms/addGym",
             element: <BoulderGymForm />,
             loader: boulderGymFormLoader,
-            action: boulderGymFormAction,
+            action: boulderGymFormAction, 
           }
         ]
       },
@@ -46,12 +46,12 @@ const router = createBrowserRouter([
             action: bouldersFormAction,
           },
           {
-            path: "delete/:id", // ✅ relative
+            path: "delete/:boulderId", // ✅ relative
             element: <DeleteBoulderForm />,
             action: bouldersFormAction,
           },
           {
-            path: "edit/:id",   // ✅ relative
+            path: "edit/:boulderId",   // ✅ relative
             element: <UpdateBoulderForm />,
             loader: editBoulderLoader,
             action: bouldersFormAction,
@@ -62,6 +62,25 @@ const router = createBrowserRouter([
         path: "/boulderGyms/:id",
         element: <BoulderGymDetail />,
         loader: gymDetailLoader,
+        children: [
+          {
+            path: "addBoulder", // ✅ relative
+            element: <BoulderForm />,
+            loader: bouldersFormLoader,
+            action: bouldersFormAction,
+          },
+          {
+            path: "delete/:boulderId", // ✅ relative
+            element: <DeleteBoulderForm />,
+            action: bouldersFormAction,
+          },
+          {
+            path: "edit/:boulderId",   // ✅ relative
+            element: <UpdateBoulderForm />,
+            loader: editBoulderLoader,
+            action: bouldersFormAction,
+          }
+        ]
       }
     ]
   },

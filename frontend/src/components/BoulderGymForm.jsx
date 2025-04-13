@@ -19,7 +19,6 @@ function BoulderGymForm() {
       [e.target.name]: e.target.value,
     }));
   };
-
   return (
     <Box
     component={Form}

@@ -1,10 +1,11 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
-import { Container, Typography, Paper } from "@mui/material";
+import { Outlet, useLoaderData, Link as RouterLink } from "react-router-dom";
+import { Container, Typography, Box, Button } from "@mui/material";
+import BoulderList from "./BoulderList"
 
 function BoulderGymDetail() {
   const gym = useLoaderData();
-
+  const linkTo = location.pathname === `/boulderGyms/${gym.id}` ? `/boulderGyms/${gym.id}/addBoulder` : `/boulderGyms/${gym.id}`;
   return (
     <Container sx={{ mt: 12 }}>
       <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
@@ -13,19 +14,13 @@ function BoulderGymDetail() {
       <Typography variant="subtitle1" sx={{ mb: 4 }}>
         {gym.address} • {gym.city}
       </Typography>
-
-      {Array.isArray(gym.boulders) && gym.boulders.length > 0 ? (
-        gym.boulders.map((boulder) => (
-          <Paper sx={{ p: 2, mb: 2 }} id={boulder.id} key={boulder.name}>
-            <Typography variant="h6">{boulder.name}</Typography>
-            <Typography variant="body2" color="textSecondary">
-              Grade: {boulder.grade} | Built by: {boulder.builderName}
-            </Typography>
-          </Paper>
-        ))
-      ) : (
-        <Typography>No boulders set for this gym yet.</Typography>
-      )}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+        <Button component={RouterLink} to={linkTo} variant="contained">
+          {location.pathname === `/boulderGyms/${gym.id}` ? "Open form" : "Close form"}
+        </Button>
+      </Box>
+      <Outlet context={gym}/>
+      <BoulderList boulders={gym.boulders} path={`/boulderGyms/${gym.id}`} />
     </Container>
   );
 }

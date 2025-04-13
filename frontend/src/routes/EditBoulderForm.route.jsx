@@ -1,6 +1,6 @@
 export async function editBoulderLoader({ params }) {
     const [boulderRes, gradeOptionsRes, gymsRes] = await Promise.all([
-        fetch(`/api/boulders/${params.id}`),
+        fetch(`/api/boulders/${params.boulderId}`),
         fetch(`/api/gradeValues`),
         fetch(`/api/boulderGyms`),
       ]);

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   TextField,
   Button,
   MenuItem,
 } from "@mui/material";
-import {Form, useLoaderData} from 'react-router-dom'
+import {Form, useLoaderData, useOutletContext} from 'react-router-dom'
 
 function BoulderForm() {
+  const context = useOutletContext()
   const { boulderGyms, gradeOptions } = useLoaderData();
   
   const [formData, setFormData] = useState({
@@ -17,6 +18,14 @@ function BoulderForm() {
     gym_id: "",
   });
 
+  useEffect(() => {
+    if (context !== undefined && context.id !== undefined ) {
+      setFormData(prev => ({
+        ...prev,
+        gym_id: context.id,
+      }));
+    }
+  }, [context]);
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -69,6 +78,7 @@ function BoulderForm() {
           required
           fullWidth
           sx={{ mb: 2 }}
+          disabled={context !== undefined}
         >
           {boulderGyms.map((gym) => (
             <MenuItem key={gym.id} value={gym.id}>

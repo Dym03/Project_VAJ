@@ -2,11 +2,11 @@ import React from "react";
 import {
   Container,
   Typography,
-  Paper,
   Box, 
-  Button
+  Button,
 } from "@mui/material";
 import { Outlet, useLoaderData , useLocation, Link as RouterLink} from "react-router-dom";
+import BoulderList from "./BoulderList"
 
 function ActiveBoulders() {
   const boulders = useLoaderData()
@@ -28,41 +28,7 @@ function ActiveBoulders() {
         <Outlet />
       </Box>
       
-
-      {boulders.length === 0 ? (
-        <Typography>No active boulders found.</Typography>
-      ) : (
-        boulders.map((boulder) => (
-          <Paper sx={{ p: 2, mb: 2 }} id={boulder.id} key={boulder.name}>
-            <Typography variant="h6">{boulder.name}</Typography>
-            <Typography variant="body2" color="textSecondary">
-              Grade: {boulder.grade} | By: {boulder.builderName} | At: {boulder.gym.name} ({boulder.gym.city})
-            </Typography>
-
-            <Box sx={{ mt: 2 , display: "flex", gap: 2}}>
-              <Button
-                variant="outlined"
-                color="error"
-                component={RouterLink}
-                to={`/active_boulders/delete/${boulder.id}`}
-              >
-                Delete
-              </Button>
-
-              <Button
-                variant="outlined"
-                component={RouterLink}
-                to={`/active_boulders/edit/${boulder.id}`}
-                sx={{ mr: 1 }}
-              >
-                Edit
-              </Button>
-           </Box>
-
-           
-          </Paper>
-        ))
-      )}
+      <BoulderList boulders={boulders} path="/active_boulders"/>
     </Container>
   );
 }
