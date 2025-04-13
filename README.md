@@ -1,14 +1,51 @@
-## Project VAJ
+# Project VAJ
 
-### Instructions
+# Getting started
 
-You will find instrucions on https://github.com/vsb-vaj
+## Install Dependencies
+```bash
+git clone https://github.com/Dym03/Project_VAJ.git
+npm install
+cd frontend 
+npm install
+cd ../backend
+npm install
+```
+## Start Backend Server
+```bash
+cd backend
+npm run dev
+```
+## Start Frontend Server
+```bash
+cd frontend
+npm run dev
+```
 
-Split your projects into 2 JS projects. You will have 2x package.json. One will be for BE in folder be, one will be for FE in folder fe. 
+## Development: Linting and Formating
+```bash
+cd frontend
+npx eslint .
+(optional): npx eslint . --fix
+cd ../backend
+npx eslint .
+(optional): npx eslint . --fix
+```
 
-You can write instructions to your project either in this README ind in separeate README files in the folders be, fe. 
 
-Delete this text after you finish :) 
+# Project tree
 
-Good luck!
-
+* [backend](./backend)
+    * [controllers](./backend/controllers) Takes care of logic
+    * [models](./backend/models) Takes care of database connection
+    * [routes](./backend/routes) Takes care of routes
+    * [prisma](./backend/prisma) Takes care of database, definition of models
+ * [frontend](./frontend)
+    * [src](./frontend/src/)
+        * [components](./frontend/src/components) Components used in the app
+        * [routes](./frontend/src/routes) Store load functions and actions for export
+        * [main](./frontend/src/main.jsx) Defines routing for the project
+        * [App](./frontend/src/App.jsx) Main component of the app, take care of the navbar
+ 
+ * [README.md](./README.md)
+ 

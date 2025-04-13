@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "nodemon": "^3.1.9",
+    "prisma": "^6.6.0",
+    "ts-node": "^10.9.2"
+  },
+  "scripts": {
+    "dev": "nodemon --exec ts-node app.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.5.0",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "typescript": "^5.8.3"
+  }
+}

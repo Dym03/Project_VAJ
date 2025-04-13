@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model BoulderGym {
+  id        Int      @id @default(autoincrement())
+  name      String
+  city      String
+  address   String
+  boulders  Boulder[]
+}
+
+model Boulder {
+  id     Int     @id @default(autoincrement())
+  name   String  
+  createdAt DateTime @default(now())
+  active    Boolean  @default(true)
+  grade  GradeValue   
+  builderName String 
+  gym    BoulderGym @relation(fields: [gym_id], references: [id])
+  gym_id  Int
+  userGrades  UserGrade[] // To track which users have graded this boulder
+}
+
+model UserGrade {
+  id        Int       @id @default(autoincrement())
+  username  String    
+  grade     GradeValue
+  boulderId Int
+  boulder   Boulder   @relation(fields: [boulderId], references: [id])
+
+  @@unique([username, boulderId]) // Enforces that each user can grade a boulder only once
+}
+
+enum GradeValue {
+  V0
+  V1
+  V2
+  V3
+  V4
+  V5
+  V6
+  V7
+  V8
+  V9
+  V10
+  V11
+  V12
+  V13
+  V14
+  V15
+  V16
+  V17
+}
