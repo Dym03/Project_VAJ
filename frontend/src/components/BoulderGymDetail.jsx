@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Paper } from "@mui/material";
 
 function BoulderGymDetail() {
   const gym = useLoaderData();
@@ -18,12 +18,12 @@ function BoulderGymDetail() {
 
       {Array.isArray(gym.boulders) && gym.boulders.length > 0 ? (
         gym.boulders.map((boulder) => (
-          <Box key={boulder.id} sx={{ mb: 2 }}>
+          <Paper sx={{ p: 2, mb: 2 }} id={boulder.id} key={boulder.name}>
             <Typography variant="h6">{boulder.name}</Typography>
             <Typography variant="body2" color="textSecondary">
               Grade: {boulder.grade} | Built by: {boulder.builderName}
             </Typography>
-          </Box>
+          </Paper>
         ))
       ) : (
         <Typography>No boulders set for this gym yet.</Typography>

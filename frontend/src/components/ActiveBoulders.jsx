@@ -6,6 +6,7 @@ import {
   TextField,
   Button,
   MenuItem,
+  Paper 
 } from "@mui/material";
 
 function ActiveBoulders() {
@@ -162,12 +163,12 @@ function ActiveBoulders() {
         <Typography>No active boulders found.</Typography>
       ) : (
         boulders.map((boulder) => (
-          <Box key={boulder.id} sx={{ mb: 2 }}>
+          <Paper sx={{ p: 2, mb: 2 }} id={boulder.id} key={boulder.name}>
             <Typography variant="h6">{boulder.name}</Typography>
             <Typography variant="body2" color="textSecondary">
-              Grade: {boulder.grade} | By: {boulder.builderName}
+              Grade: {boulder.grade} | By: {boulder.builderName} | At: {boulder.gym.name} ({boulder.gym.city})
             </Typography>
-          </Box>
+          </Paper>
         ))
       )}
     </Container>

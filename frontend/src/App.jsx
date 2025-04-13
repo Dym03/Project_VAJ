@@ -5,6 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from "@mui/material/Button";
 import Box from '@mui/material/Box';
 import { Outlet, Link as RouterLink} from "react-router";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 const navItems = [
   { label: "Home", path: "/" },
