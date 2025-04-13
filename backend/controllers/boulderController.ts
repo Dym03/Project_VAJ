@@ -113,3 +113,27 @@ export const deleteBoulder = async (
     }
   }
 };
+
+
+export const getBoulderById = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  const { id } = req.params;
+  const parsed_id = parseInt(id);
+
+  try {
+    const boulder = await boulderModel.getBoulderById(parsed_id);
+    if (!boulder) {
+      res.status(404).json({ error: 'Boulder not found' });
+      return;
+    }
+    res.json(boulder);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'An unknown error occurred' });
+    }
+  }
+};

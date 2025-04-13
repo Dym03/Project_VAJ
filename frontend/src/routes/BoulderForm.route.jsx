@@ -69,6 +69,32 @@ export async function loader() {
         });
       }
     }
+
+    if (actionType === "update") {
+      const id = formData.get("id");
+      const body = {
+        name: formData.get("name"),
+        grade: formData.get("grade"),
+        builderName: formData.get("builderName"),
+        gym_id: formData.get("gym_id"),
+      };
+    
+      const res = await fetch(`/api/boulders/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+    
+      if (res.ok) {
+        return redirect("/active_boulders");
+      } else {
+        const error = await res.json();
+        throw new Response(error.error || "Failed to update boulder", {
+          status: 400,
+        });
+      }
+    }
+    
   
     return null;
   }

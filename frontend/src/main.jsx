@@ -13,6 +13,8 @@ import {loader as bouldersLoader} from './routes/Boulders.route'
 import {loader as bouldersFormLoader, action as bouldersFormAction} from './routes/BoulderForm.route'
 import BoulderForm from "./components/BoulderForm";
 import DeleteBoulderForm from "./components/DeleteBoulderForm";
+import UpdateBoulderForm from "./components/UpdateBoulderForm";
+import { editBoulderLoader } from "./routes/EditBoulderForm.route";
 
 const router = createBrowserRouter([
   {
@@ -38,18 +40,24 @@ const router = createBrowserRouter([
         loader: bouldersLoader,
         children: [
           {
-            path: "/active_boulders/addBoulder",
+            path: "addBoulder", // ✅ relative
             element: <BoulderForm />,
             loader: bouldersFormLoader,
             action: bouldersFormAction,
           },
           {
-            path: "delete/:id",
+            path: "delete/:id", // ✅ relative
             element: <DeleteBoulderForm />,
+            action: bouldersFormAction,
+          },
+          {
+            path: "edit/:id",   // ✅ relative
+            element: <UpdateBoulderForm />,
+            loader: editBoulderLoader,
             action: bouldersFormAction,
           }
         ]
-      },
+      },      
       {
         path: "/boulderGyms/:id",
         element: <BoulderGymDetail />,

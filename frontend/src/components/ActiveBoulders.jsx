@@ -39,7 +39,7 @@ function ActiveBoulders() {
               Grade: {boulder.grade} | By: {boulder.builderName} | At: {boulder.gym.name} ({boulder.gym.city})
             </Typography>
 
-            <Box sx={{ mt: 2 }}>
+            <Box sx={{ mt: 2 , display: "flex", gap: 2}}>
               <Button
                 variant="outlined"
                 color="error"
@@ -48,7 +48,18 @@ function ActiveBoulders() {
               >
                 Delete
               </Button>
+
+              <Button
+                variant="outlined"
+                component={RouterLink}
+                to={`/active_boulders/edit/${boulder.id}`}
+                sx={{ mr: 1 }}
+              >
+                Edit
+              </Button>
            </Box>
+
+           
           </Paper>
         ))
       )}
