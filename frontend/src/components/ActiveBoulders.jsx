@@ -38,6 +38,17 @@ function ActiveBoulders() {
             <Typography variant="body2" color="textSecondary">
               Grade: {boulder.grade} | By: {boulder.builderName} | At: {boulder.gym.name} ({boulder.gym.city})
             </Typography>
+
+            <Box sx={{ mt: 2 }}>
+              <Button
+                variant="outlined"
+                color="error"
+                component={RouterLink}
+                to={`/active_boulders/delete/${boulder.id}`}
+              >
+                Delete
+              </Button>
+           </Box>
           </Paper>
         ))
       )}

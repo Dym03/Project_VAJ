@@ -76,6 +76,7 @@ function BoulderForm() {
             </MenuItem>
           ))}
         </TextField>
+        <input type="hidden" name="_action" value="create" />
         <Button type="submit" variant="contained" color="primary">
           Add Boulder
         </Button>
