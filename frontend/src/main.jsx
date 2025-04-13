@@ -9,6 +9,9 @@ import BoulderGymDetail from "./components/BoulderGymDetail";
 import BoulderGymForm from "./components/BoulderGymForm";
 import { loader as gymDetailLoader } from "./routes/BoulderGymDetail.route";
 import {action as boulderGymFormAction, loader as boulderGymFormLoader} from './routes/BoulderGymForm.route'
+import {loader as bouldersLoader} from './routes/Boulders.route'
+import {loader as bouldersFormLoader, action as bouldersFormAction} from './routes/BoulderForm.route'
+import BoulderForm from "./components/BoulderForm";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +29,20 @@ const router = createBrowserRouter([
             loader: boulderGymFormLoader,
             action: boulderGymFormAction,
           }
-        ]      
+        ]
       },
       {
         path: "/active_boulders",
         element: <ActiveBoulders />,
+        loader: bouldersLoader,
+        children: [
+          {
+            path: "/active_boulders/addBoulder",
+            element: <BoulderForm />,
+            loader: bouldersFormLoader,
+            action: bouldersFormAction,
+          }
+        ]
       },
       {
         path: "/boulderGyms/:id",

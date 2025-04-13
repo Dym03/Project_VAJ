@@ -1,7 +1,7 @@
 import { redirect } from 'react-router-dom';
 
 export async function loader() {
-    const res = await fetch(`${window.location.origin}/api/boulderGyms?grouped=true`);
+    const res = await fetch(`/api/boulderGyms?grouped=true`);
     if (!res.ok) {
       throw new Response("Failed to load gyms", { status: res.status });
     }
