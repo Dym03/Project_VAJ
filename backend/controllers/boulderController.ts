@@ -6,8 +6,14 @@ export const getAllBoulders = async (
   _req: Request,
   res: Response,
 ): Promise<void> => {
+  const { active } = _req.query;
   try {
-    const boulders = await boulderModel.getAllBoulders();
+    let boulders = undefined;
+    if (active === 'true') {
+      boulders = await boulderModel.getAllActiveBoulders();
+    } else {
+      boulders = await boulderModel.getAllBoulders();
+    }
     res.status(200).json(boulders);
   } catch (error: unknown) {
     if (error instanceof Error) {
@@ -22,8 +28,9 @@ export const createBoulder = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const { name, builderName, grade, id, active } = req.body;
-  const gym_id = parseInt(id);
+  const { name, builderName, grade, active } = req.body;
+  const gym_id = parseInt(req.body['gym_id']);
+
   if (!builderName || !name || !grade || !gym_id) {
     res.status(400).json({
       error: 'Builder`s name, boulder name, grade and gym id are required',
@@ -101,6 +108,30 @@ export const deleteBoulder = async (
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(400).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'An unknown error occurred' });
+    }
+  }
+};
+
+
+export const getBoulderById = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  const { id } = req.params;
+  const parsed_id = parseInt(id);
+
+  try {
+    const boulder = await boulderModel.getBoulderById(parsed_id);
+    if (!boulder) {
+      res.status(404).json({ error: 'Boulder not found' });
+      return;
+    }
+    res.json(boulder);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
     } else {
       res.status(500).json({ error: 'An unknown error occurred' });
     }

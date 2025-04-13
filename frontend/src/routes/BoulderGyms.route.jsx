@@ -1,5 +1,7 @@
-export function loader() {
-    return fetch("http://localhost:3000/api/boulderGyms?grouped=true").then((res) =>
-      res.json()
-    );
+export async function loader() {
+  const res = await fetch(`${window.location.origin}/api/boulderGyms?grouped=true`);
+  if (!res.ok) {
+    throw new Response("Failed to load gyms", { status: res.status });
+  }
+  return res.json();
 }

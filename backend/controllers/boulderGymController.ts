@@ -46,7 +46,6 @@ export const createBoulderGym = async (
   res: Response,
 ): Promise<void> => {
   const { name, city, address } = req.body;
-  console.log(req.body);
 
   if (!city || !name || !address) {
     res.status(400).json({ error: 'Name, city and adress are required' });

@@ -3,7 +3,21 @@ import { PrismaClient, Boulder, GradeValue } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const getAllBoulders = async (): Promise<Boulder[]> => {
-  return prisma.boulder.findMany();
+  return prisma.boulder.findMany({ include: { gym: true } });
+};
+
+export const getBoulderById = async (id: number): Promise<Boulder | null> => {
+  return prisma.boulder.findUnique({
+    where: { id },
+    include: { gym: true }, // include the gym info if needed for the form
+  });
+};
+
+export const getAllActiveBoulders = async (): Promise<Boulder[]> => {
+  return prisma.boulder.findMany({
+    where: { active: true },
+    include: { gym: true },
+  });
 };
 
 export const createBoulder = async (data: {
