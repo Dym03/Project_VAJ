@@ -21,7 +21,7 @@ function ActiveBoulders() {
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
         <Button component={RouterLink} to={linkTo} variant="contained">
-          {location.pathname === "/active_boulders" ? "Open add form" : "Close add form"}
+          {location.pathname === "/active_boulders" ? "Open form" : "Close form"}
         </Button>
       </Box>
       <Box>

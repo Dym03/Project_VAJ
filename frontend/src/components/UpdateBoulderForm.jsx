@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLoaderData, Form, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 function UpdateBoulderForm() {
-  const { boulder, gradeOptions } = useLoaderData();
+  const { boulder, gradeOptions, boulderGyms } = useLoaderData();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -18,6 +18,15 @@ function UpdateBoulderForm() {
     grade: boulder.grade,
     gym_id: boulder.gym_id,
   });
+
+  useEffect(() => {
+    setFormData({
+      name: boulder.name,
+      builderName: boulder.builderName,
+      grade: boulder.grade,
+      gym_id: boulder.gym_id,
+    });
+  }, [boulder]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -67,14 +76,22 @@ function UpdateBoulderForm() {
       </TextField>
 
       <TextField
-        label="Gym ID"
+        select
+        label="Gym"
         name="gym_id"
         value={formData.gym_id}
         onChange={handleChange}
-        fullWidth
         required
+        fullWidth
         sx={{ mb: 2 }}
-      />
+        >
+        {boulderGyms.map((gym) => (
+            <MenuItem key={gym.id} value={gym.id}>
+            {gym.name} ({gym.city})
+            </MenuItem>
+        ))}
+      </TextField>
+
       <input type="hidden" name="_action" value="update" />
       <input type="hidden" name="id" value={boulder.id} />
       <Button type="submit" variant="contained" sx={{ mr: 2 }}>
