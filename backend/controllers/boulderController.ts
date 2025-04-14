@@ -114,7 +114,6 @@ export const deleteBoulder = async (
   }
 };
 
-
 export const getBoulderById = async (
   req: Request,
   res: Response,
