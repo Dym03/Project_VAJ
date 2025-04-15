@@ -1,6 +1,8 @@
 
 # Project VAJ
 
+## Created by DYM0018 and JEC0013
+
 ## Getting started
 
 ### Install Dependencies
