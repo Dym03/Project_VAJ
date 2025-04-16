@@ -4,9 +4,7 @@ import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
 import Button from "@mui/material/Button";
 import Box from '@mui/material/Box';
-import { Outlet, Link as RouterLink} from "react-router";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import { Outlet, Link as RouterLink } from "react-router";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -16,6 +14,7 @@ const navItems = [
 
 
 function App() {
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed"  sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>

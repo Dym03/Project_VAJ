@@ -15,12 +15,17 @@ import BoulderForm from "./components/BoulderForm";
 import DeleteBoulderForm from "./components/DeleteBoulderForm";
 import UpdateBoulderForm from "./components/UpdateBoulderForm";
 import { editBoulderLoader } from "./routes/EditBoulderForm.route";
+import Home from "./components/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        index: true,
+        element: <Home/>
+      },
       { 
         path: "/boulderGyms",
         element: <BoulderGyms />,
@@ -40,18 +45,18 @@ const router = createBrowserRouter([
         loader: bouldersLoader,
         children: [
           {
-            path: "addBoulder", // ✅ relative
+            path: "addBoulder",
             element: <BoulderForm />,
             loader: bouldersFormLoader,
             action: bouldersFormAction,
           },
           {
-            path: "delete/:boulderId", // ✅ relative
+            path: "delete/:boulderId",
             element: <DeleteBoulderForm />,
             action: bouldersFormAction,
           },
           {
-            path: "edit/:boulderId",   // ✅ relative
+            path: "edit/:boulderId",
             element: <UpdateBoulderForm />,
             loader: editBoulderLoader,
             action: bouldersFormAction,
@@ -64,18 +69,18 @@ const router = createBrowserRouter([
         loader: gymDetailLoader,
         children: [
           {
-            path: "addBoulder", // ✅ relative
+            path: "addBoulder",
             element: <BoulderForm />,
             loader: bouldersFormLoader,
             action: bouldersFormAction,
           },
           {
-            path: "delete/:boulderId", // ✅ relative
+            path: "delete/:boulderId",
             element: <DeleteBoulderForm />,
             action: bouldersFormAction,
           },
           {
-            path: "edit/:boulderId",   // ✅ relative
+            path: "edit/:boulderId",
             element: <UpdateBoulderForm />,
             loader: editBoulderLoader,
             action: bouldersFormAction,
