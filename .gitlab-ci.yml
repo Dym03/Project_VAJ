@@ -13,14 +13,12 @@ frontend_format:
     - cd frontend
     - npm install
     - npx eslint .
-    - cd ..
 
 backend_format:
   script:
     - cd backend
     - npm install
     - npx eslint .
-    - cd ..
 
 md_test:
   stage: test
